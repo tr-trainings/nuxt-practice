@@ -2,15 +2,15 @@
     div
         app-header
         div.container.m-t-3
-            div.box(v-for="post in posts")
-                div.card
-                    div.card-header 
-                        div.card-header-title Title: {{post.title}}
-                        p(value="") by: {{ post.name }}
-                    div.card-content
-                        p {{ post.body }}
-                        br
-                        nuxt-link(:to="'/posts/'+ post.id") Read more...
+            //- div.box(v-for="post in posts")
+            //-     div.card
+            //-         div.card-header 
+            //-             div.card-header-title Title: {{post.title}}
+            //-             p(value="") by: {{ post.name }}
+            //-         div.card-content
+            //-             p {{ post.body }}
+            //-             br
+            //-             nuxt-link(:to="'/posts/'+ post.id") Read more...
 </template>
 
 <script>
@@ -47,19 +47,26 @@ export default {
     },
     asyncData ({ params }) {
         return axios.get(`https://jsonplaceholder.typicode.com/posts/`)
-        .then(async (res) => {
-          await res.data.forEach(function(element, index) {
-            res.data[index].name = axios.get(`https://jsonplaceholder.typicode.com/users/${element.userId}`)
-          })
-          res.data.forEach(function(element, index) {
-            element.name.then(function(result) {
-              res.data[index].name = result.data.name
-            })
-          })
+        .then( (res) => {
+        //    res.data.forEach(async function(element, index) {
+        //     res.data[index].name = await axios.get(`https://jsonplaceholder.typicode.com/users/${element.userId}`)
+        //   })
+        //   res.data.forEach(function(element, index) {
+        //     element.name.then(function(result) {
+        //       res.data[index].name = result.data.name
+        //     })
+        //   })
           return {
             posts: res.data
           }
         })
+        .then(res => {
+            res.posts.forEach(  function (element, index) {
+                res.posts[index].name = await axios.get
+            })
+        })
+
+        // https://stackoverflow.com/questions/37213783/waiting-for-all-promises-called-in-a-loop-to-finish
     }
 }
 </script>

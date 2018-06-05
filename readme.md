@@ -423,7 +423,7 @@ and login by typing
 ```
 $ heroku login
 ```
-![heroku-login](![heroku-create-app](https://raw.githubusercontent.com/trleonarddalmacio/images/master/nuxt-tutorial/7%20Deployment%201.png))
+![heroku-login](https://raw.githubusercontent.com/trleonarddalmacio/images/master/nuxt-tutorial/7%20Deployment%201.png)
 
 In your Heroku dashboard create a new app
 ![heroku-create-app](https://raw.githubusercontent.com/trleonarddalmacio/images/master/nuxt-tutorial/7%20Deployment%202.png)
@@ -435,7 +435,7 @@ $ heroku config:set NPM_CONFIG_PRODUCTION=false -a <app-name>
 $ heroku config:set HOST=0.0.0.0 -a <app-name>
 $ heroku config:set NODE_ENV=production -a <app-name>
 ```
-![heroku-config](![heroku-create-app](https://raw.githubusercontent.com/trleonarddalmacio/images/master/nuxt-tutorial/7%20Deployment%203.png))
+![heroku-config](https://raw.githubusercontent.com/trleonarddalmacio/images/master/nuxt-tutorial/7%20Deployment%203.png)
 
 To let our application run on Heroku, we need to modify our scripts in the package.json. 
 Replace your scripts with this
@@ -447,7 +447,7 @@ Replace your scripts with this
 	"heroku-postbuild": "npm run build"
 },
 ```
-![heroku-script](![heroku-create-app](https://raw.githubusercontent.com/trleonarddalmacio/images/master/nuxt-tutorial/7%20Deployment%204.png))
+![heroku-script](https://raw.githubusercontent.com/trleonarddalmacio/images/master/nuxt-tutorial/7%20Deployment%204.png)
 
 Now lets connect create our repo, connect it to Heroku and then, deploy it!
 Navigate to your project folder and type
@@ -459,6 +459,8 @@ $ heroku git:remote -a <app-name>
 $ git push heroku master
 ```
 Wait for it to be pushed, if you are successful you should have seen this message
-![pushing-to-heroku](![heroku-create-app](https://raw.githubusercontent.com/trleonarddalmacio/images/master/nuxt-tutorial/7%20Deployment%205.png))
+
+![pushing-to-heroku](https://raw.githubusercontent.com/trleonarddalmacio/images/master/nuxt-tutorial/7%20Deployment%205.png)
+
 Now let's see our deployed website!
-![deployed-website](![heroku-create-app](https://raw.githubusercontent.com/trleonarddalmacio/images/master/nuxt-tutorial/7%20Deployment%206.png))
+![deployed-website](https://raw.githubusercontent.com/trleonarddalmacio/images/master/nuxt-tutorial/7%20Deployment%206.png)

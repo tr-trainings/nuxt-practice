@@ -1,72 +1,33 @@
 <template lang="pug">
     div
+        img.has-bg-img
         app-header
         div.container.m-t-3
-            //- div.box(v-for="post in posts")
-            //-     div.card
-            //-         div.card-header 
-            //-             div.card-header-title Title: {{post.title}}
-            //-             p(value="") by: {{ post.name }}
-            //-         div.card-content
-            //-             p {{ post.body }}
-            //-             br
-            //-             nuxt-link(:to="'/posts/'+ post.id") Read more...
+            div.card.m-b-1(v-for="post in posts")
+                div.box
+                    div.card-header 
+                        div.card-header-title Title: {{post.title}}
+                    div.card-content
+                        p {{ post.body }}
+                        br
+                        nuxt-link(:to="'/posts/'+ post.id") Read more...
 </template>
 
 <script>
 import axios from 'axios';
-
 import Header from '~/components/Header.vue';
 
 export default {
-    data() {
-      return {
-      }
-    },
     components: {
         appHeader: Header
     },
-    methods: {
-        getUser(id) {
-          axios.get(`https://jsonplaceholder.typicode.com/users/${id}`)
-            .then((res) => {
-                // console.log(res.data.name);
-                return res.data.name
-            })
-            // .then (res => {
-            //     console.log(res);
-            //     return res;
-            // })
-            .catch((err) =>{
-                console.log(err);
-            })
-        }
-    },
-    updated () {
-      
-    },
     asyncData ({ params }) {
         return axios.get(`https://jsonplaceholder.typicode.com/posts/`)
-        .then( (res) => {
-        //    res.data.forEach(async function(element, index) {
-        //     res.data[index].name = await axios.get(`https://jsonplaceholder.typicode.com/users/${element.userId}`)
-        //   })
-        //   res.data.forEach(function(element, index) {
-        //     element.name.then(function(result) {
-        //       res.data[index].name = result.data.name
-        //     })
-        //   })
-          return {
-            posts: res.data
-          }
+        .then((res) => {
+            return {
+                posts: res.data
+            }
         })
-        .then(res => {
-            res.posts.forEach(  function (element, index) {
-                res.posts[index].name = await axios.get
-            })
-        })
-
-        // https://stackoverflow.com/questions/37213783/waiting-for-all-promises-called-in-a-loop-to-finish
     }
 }
 </script>
@@ -75,4 +36,23 @@ export default {
 .m-t-3 {
     margin-top: 3rem;
 }
+.m-b-1 {
+    margin-bottom: 1rem;
+}
+.box {
+    background: rgba(255,255,255, 0.6);
+}
+.card {
+    background: rgba(255,255,255, 0.6);
+    color: rgba(0,0,0,1);
+}
+.has-bg-img {
+    background: url('~/assets/bg-img.jpg');
+    background-size: cover;
+    background-position: top;
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+}
 </style>
+

@@ -329,7 +329,7 @@ module.exports = {
 ```
 ---
 
-**NOTE:**  This is **not** the optimal way to **use Buefy with Nuxt**. You should  run `npm install --save nuxt-buefy` and simply include it on **modules** at **nuxt.config.js**. I've imported Buefy through plugins to show how to add a plugin. But both of them do work, it's just that importing Buefy through plugin the would delay the application of the css.
+**NOTE:**  This is **not** the optimal way to **use Buefy with Nuxt**. You should  run `npm install --save nuxt-buefy` and simply include it on **modules** at **nuxt.config.js**. I've imported Buefy through plugins to show how to add a plugin. But both of them do work, it's just that importing Buefy through the plugin would delay the application of the css.
 
 **This is the correct way**
 ```

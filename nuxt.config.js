@@ -8,13 +8,10 @@ module.exports = {
       './node_modules/buefy/lib/buefy.css'
 
     ],
-    plugins: [
-        { src: '~/plugins/buefy', ssr: true }
-    ],
-  //   modules: [
-  //     // Simple usage
-  //     'nuxt-buefy',
+    modules: [
+      // Simple usage
+      'nuxt-buefy',
   
-  //     ['nuxt-buefy', { /* buefy options */ }]
-  //  ],
+      ['nuxt-buefy', { /* buefy options */ }]
+   ],
 }

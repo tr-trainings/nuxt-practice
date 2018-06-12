@@ -31,7 +31,11 @@ Your folder and package.json should look like this.
 
 To verify that it's running correctly let's create a folder named **pages**, and create an **index.vue** file inside the created folder. 
 
+---
+
 **NOTE:** The pages folder will serve as the routing path in the parameter field. 
+
+---
 
 For example,
 You have a site called **googlee<span></span>.com**
@@ -63,6 +67,8 @@ My current folder structure look like this:
 
 ![folder structure](https://raw.githubusercontent.com/trleonarddalmacio/images/master/nuxt-tutorial/2.%20Directory.png)
 
+
+---
 **NOTE:** You can also use a template to setup a Nuxt.js project.
 ### Installation using a starter template
 First you need to have a [vue-cli](https://github.com/vuejs/vue-cli) installed. In case you don't have it, you can install it by going to the terminal and typing
@@ -79,6 +85,7 @@ $ cd (folder)
 $ npm install 
 $ npm run dev
 ```
+---
 
 # 3. Routing
 If you're familiar with [vue-router](https://router.vuejs.org/), this is easier to understand. In essence the **Nuxt.js** would automatically setup the routing of the site based on the folder and file structure of the **pages** folder. 
@@ -156,6 +163,8 @@ Try accessing
 http://localhost:3000/nested-routes/users
 http://localhost:3000/nested-routes/users/3
 
+---
+
 **NOTE:** You can validate params by adding a validate method. Change the content of the _id.vue to
 ```html
 <template>
@@ -175,6 +184,8 @@ export default {
 ```
 and try accessing
 http://localhost:3000/nested-routes/users/one
+
+---
 
 # 4. [Async Data](https://nuxtjs.org/guide/async-data)
 You may want to use asyncData if you want to fetch a data from the server without using store. ```asyncData``` is always called before loading a component. There are **3 ways** you can use asyncData, by **returning a promise**, **using await/async** and **using a callback**. I will be using https://jsonplaceholder.typicode.com/ to fetch some dummy data so we can try it without creating an API.
@@ -283,7 +294,7 @@ Thus we will fix the Axios that we import earlier and add some plugins and packa
 
 To install the packages type the
 ```
-$ npm install --save buefy
+$ npm install --save nuxt-buefy
 # and
 $ npm install --save-dev pug@2.0.0-beta6 pug-loader node-sass sass-loader
 ```
@@ -306,12 +317,45 @@ module.exports = {
 			'buefy'
 		]
 	},
-
 	plugins: [
 		{ src: '~/plugins/buefy', ssr:  false }
 	]
+	// modules: [
+	// // Simple usage
+	// 'nuxt-buefy',
+	// ['nuxt-buefy', { /* buefy options */ }]
+	// ],
 }
 ```
+---
+
+**NOTE:**  This is **not** the optimal way to **use Buefy with Nuxt**. You should  run `npm install --save nuxt-buefy` and simply include it on **modules** at **nuxt.config.js**. I've imported Buefy through plugins to show how to add a plugin. But both of them do work, it's just that importing Buefy through plugin the would delay the application of the css.
+
+**This is the correct way**
+```
+$ npm install --save nuxt-buefy
+```
+nuxt.config.js
+```js
+module.exports  = {
+	build: {
+		vendor: [
+			'axios',
+		]
+	},
+	//plugins: [
+	//	{ src: '~/plugins/buefy', ssr:  false }
+	//]
+	modules: [
+		// Simple usage
+		'nuxt-buefy',
+		['nuxt-buefy', { /* buefy options */ }]
+	],
+	// ** You don't need the /plugins/buefy.js if you imported through modules **
+}
+```
+
+---
 
 Now we can freely use the Buefy inside our modules. Now, let's create a Header.vue file inside the components directory. Copy this code inside
 ```pug

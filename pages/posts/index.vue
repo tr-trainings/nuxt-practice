@@ -1,8 +1,7 @@
 <template lang="pug">
     div
         img.has-bg-img
-        app-header
-        div.container.m-t-3
+        div.container
             div.card.m-b-1(v-for="post in posts")
                 div.box
                     div.card-header 
@@ -16,12 +15,8 @@
 
 <script>
 import axios from 'axios';
-import Header from '~/components/Header.vue';
 
 export default {
-    components: {
-        appHeader: Header
-    },
     async asyncData ({ params }) {
         // get all posts from jsonplaceholder.typicode.com/post/
         let posts = await axios.get(`https://jsonplaceholder.typicode.com/posts/`).then((res) => {
@@ -51,9 +46,6 @@ export default {
 </script>
 
 <style lang="scss">
-.m-t-3 {
-    margin-top: 3rem;
-}
 .m-b-1 {
     margin-bottom: 1rem;
 }

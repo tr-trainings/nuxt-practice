@@ -44,15 +44,15 @@ export default {
     //********** Using a callback **********//
 
     asyncData ({ params }, callback) {
-        axios.get(`https://jsonplaceholder.typicode.com/posts/${params.id}`)
-        .then((res) => {
-            callback(null, {
-                userId: res.data.userId,
-                id: res.data.id,
-                title: res.data.title,
-                body: res.data.body,
-            })
-        })
+      axios.get(`https://jsonplaceholder.typicode.com/posts/${params.id}`)
+      .then((res) => {
+          callback(null, {
+              userId: res.data.userId,
+              id: res.data.id,
+              title: res.data.title,
+              body: res.data.body,
+          })
+      })
     }
 }
 </script>

@@ -5,15 +5,23 @@
 				a.nav-item.is-size-3.has-text-light </> Blog Posts
 			div.navbar-menu
 				div.navbar-start.m-l-2
-					a.navbar-item.button.is-primary.control Home
-					a.navbar-item.button.is-primary.control About Us
-				div.navbar-end
-					a.button.is-primary.control Login
-					a.button.is-primary.control Sign Up
+					nuxt-link.navbar-item.button.is-primary.control(to="/") Home
+					nuxt-link.navbar-item.button.is-primary.control(to="/posts") Posts
+					nuxt-link.navbar-item.button.is-primary.control(to="/basic-routes") Basic Routes
+					nuxt-link.navbar-item.button.is-primary.control(to="/dynamic-routes") Dynamic Routes
+					nuxt-link.navbar-item.button.is-primary.control(to="/nested-routes/users") Nested Routes
 </template>
 
-<style>
+<style lang="scss">
 .m-l-2 {
 	margin-left: 2rem;
 }
+.navbar { 
+  position: fixed !important; 
+  top: 0; left: 0; 
+  right: 0; 
+}
 </style>
+
+
+

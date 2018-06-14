@@ -3,17 +3,21 @@ import NuxtLoading from './components/nuxt-loading.vue'
 
 import '../node_modules/buefy/lib/buefy.css'
 
+import '../node_modules/buefy/lib/buefy.css'
+
+import '../node_modules/buefy/lib/buefy.css'
+
 
 let layouts = {
 
-  "_default": () => import('./layouts/default.vue'  /* webpackChunkName: "layouts/default" */).then(m => m.default || m)
+  "_default": () => import('../layouts/default.vue'  /* webpackChunkName: "layouts/default" */).then(m => m.default || m)
 
 }
 
 let resolvedLayouts = {}
 
 export default {
-  head: {"meta":[],"link":[],"style":[],"script":[]},
+  head: {"meta":[],"link":[{"rel":"stylesheet","type":"text\u002Fcss","href":"\u002F\u002Fcdn.materialdesignicons.com\u002F2.0.46\u002Fcss\u002Fmaterialdesignicons.min.css"},{"rel":"stylesheet","type":"text\u002Fcss","href":"\u002F\u002Fcdn.materialdesignicons.com\u002F2.0.46\u002Fcss\u002Fmaterialdesignicons.min.css"}],"style":[],"script":[]},
   render(h, props) {
     const loadingEl = h('nuxt-loading', { ref: 'loading' })
     const layoutEl = h(this.layout || 'nuxt')

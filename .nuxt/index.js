@@ -12,6 +12,7 @@ import { setContext, getLocation, getRouteData } from './utils'
 
 
 /* Plugins */
+import nuxt_plugin_buefy_80e3902e from 'nuxt_plugin_buefy_80e3902e' // Source: ./buefy.js
 
 
 // Component: <no-ssr>
@@ -133,6 +134,7 @@ async function createApp (ssrContext) {
 
   // Plugin execution
   
+  if (typeof nuxt_plugin_buefy_80e3902e === 'function') await nuxt_plugin_buefy_80e3902e(app.context, inject)
   
 
   // If server-side, wait for async component to be resolved first

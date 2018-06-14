@@ -177,13 +177,10 @@ Make a folder named dynamic-routes, and put their paths inside
 repeat the code above and change their `<h1>` tag according to their paths like the on above.
 
 Try accessing
-
 1. http://localhost:3000/dynamic-routes/
 ![dynamic](https://raw.githubusercontent.com/trleonarddalmacio/images/master/nuxt-tutorial/3%20Routes%202.1.png)
-
 2. http://localhost:3000/dynamic-routes/hahaha
 ![dynamic](https://raw.githubusercontent.com/trleonarddalmacio/images/master/nuxt-tutorial/3%20Routes%202.2.png)
-
 3. http://localhost:3000/dynamic-routes/folder/
 ![dynamic](https://raw.githubusercontent.com/trleonarddalmacio/images/master/nuxt-tutorial/3%20Routes%202.3.png)
 4. http://localhost:3000/dynamic-routes/folder/hehehe

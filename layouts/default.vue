@@ -1,6 +1,6 @@
 <template lang="pug">
   div
-    app-header
+    //app-header
     nuxt
 </template>
 

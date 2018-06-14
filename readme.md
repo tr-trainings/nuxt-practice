@@ -151,7 +151,7 @@ Then go to http://localhost:3000 and try accessing the routes.
 1. http://localhost:3000/basic-routes/
 ![basic routing image](https://raw.githubusercontent.com/trleonarddalmacio/images/master/nuxt-tutorial/3%20Routes%201.1.png)
 2. http://localhost:3000/basic-routes/other
-![basic routing image](https://raw.githubusercontent.com/trleonarddalmacio/images/master/nuxt-tutorial/3%20Routes%201.2.png)
+![basic routing image](https://raw.githubusercontent.com/trleonarddalmacio/images/master/nuxt-tutorial/3%20Routes%201.2.1.png)
   
 
 ### Dynamic Routing
@@ -179,10 +179,13 @@ repeat the code above and change their `<h1>` tag according to their paths like 
 Try accessing
 1. http://localhost:3000/dynamic-routes/
 ![dynamic](https://raw.githubusercontent.com/trleonarddalmacio/images/master/nuxt-tutorial/3%20Routes%202.1.png)
+
 2. http://localhost:3000/dynamic-routes/hahaha
 ![dynamic](https://raw.githubusercontent.com/trleonarddalmacio/images/master/nuxt-tutorial/3%20Routes%202.2.png)
+
 3. http://localhost:3000/dynamic-routes/folder/
 ![dynamic](https://raw.githubusercontent.com/trleonarddalmacio/images/master/nuxt-tutorial/3%20Routes%202.3.png)
+
 4. http://localhost:3000/dynamic-routes/folder/hehehe
 ![dynamic](https://raw.githubusercontent.com/trleonarddalmacio/images/master/nuxt-tutorial/3%20Routes%202.4.png)
 

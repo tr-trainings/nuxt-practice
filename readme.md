@@ -1,3 +1,13 @@
+
+## Table of Contents
+1. [Installation from scratch](#installation-from-scratch)
+2. [Directory Structure](#directory-structure)
+3. [Routing](#routing)
+4. [Async Data](#async-data)
+5. [Assets](#assets)
+6. [Plugins](#plugins)
+7. [Deployment](#deployment)
+
 In this tutorial I'll try to help you understand the fundamental workings of the Nuxt.js, create a mini blog app at the end and deploy it. This tutorial uses the [official Nuxt.js documentation](https://nuxtjs.org/) as a reference.
 
 Techonologies used:
@@ -52,7 +62,7 @@ Coming back, inside the index.vue file lets add a template with Hello World.
 </template>
 ```
 Then run
-```
+```bash
 $ npm run dev
 ```
 Now your file should be running at **http://localhost:3000/**
@@ -72,13 +82,13 @@ My current folder structure look like this:
 **NOTE:** You can also use a template to setup a Nuxt.js project.
 ### Installation using a starter template
 First you need to have a [vue-cli](https://github.com/vuejs/vue-cli) installed. In case you don't have it, you can install it by going to the terminal and typing
-```
+```bash
 $ sudo npm install -g @vue/cli 
 # or 
 $ sudo yarn global add @vue/cli
 ```
 After installing the vue-cli, you can immediately create a nuxt project with
-```
+```bash
 # (folder) refers to the name of your folder you want to create
 $ vue init nuxt-community/starter-template (folder)
 $ cd (folder)
@@ -86,20 +96,34 @@ $ npm install
 $ npm run dev
 ```
 ---
+  
 
 # 3. Routing
-If you're familiar with [vue-router](https://router.vuejs.org/), this is easier to understand. In essence the **Nuxt.js** would automatically setup the routing of the site based on the folder and file structure of the **pages** folder. 
+
+If you're familiar with [vue-router](https://router.vuejs.org/), this is easier to understand. In essence the **Nuxt.js** would automatically setup the routing of the site based on the folder and file structure of the **pages** folder.
+
+  
 
 ### There are 3 types of routing that we would be using
+
 1. Basic Routing
+
 2. Dynamic Routing
+
 3. Nested Routing
 
+  
+
 #### Basic Routing
+
 This is similar to what we have done earlier. To let it sink in let's do it again.
+
 Let's create a folder named **basic-routes** inside the pages folder. Within the **basic-routes** folder create **index.vue**, **other.vue** and copy
 
+  
+
 index.vue
+
 ```html
 <template>
 	<div>
@@ -107,7 +131,9 @@ index.vue
 	</div>
 </template>
 ```
+
 other.vue
+
 ```html
 <template>
 	<div>
@@ -115,66 +141,100 @@ other.vue
 	</div>
 </template>
 ```
+
 ![basic routing image](https://raw.githubusercontent.com/trleonarddalmacio/images/master/nuxt-tutorial/3%20Routes%201.png)
 
-Then go to http://localhost:3000 and try accessing the routes. 
+  
+
+Then go to http://localhost:3000 and try accessing the routes.
 
 1. http://localhost:3000/basic-routes/
+![basic routing image](https://raw.githubusercontent.com/trleonarddalmacio/images/master/nuxt-tutorial/3%20Routes%201.1.png)
 2. http://localhost:3000/basic-routes/other
+![basic routing image](https://raw.githubusercontent.com/trleonarddalmacio/images/master/nuxt-tutorial/3%20Routes%201.2.png)
+  
 
 ### Dynamic Routing
-Dynamic routes can be created by prefixing an **underscore** to the name of the folder or file.
+Dynamic routes, are routes that would **catch all the routes that aren't specified using the basic routes**. These routes can be created by prefixing an **underscore** to the name of the folder or file.
 
 Make a folder named dynamic-routes, and put their paths inside
+
 ![dynamic](https://raw.githubusercontent.com/trleonarddalmacio/images/master/nuxt-tutorial/3%20Routes%202.png)
 
+**copy** the structure of the **/pages/dynamic-routes/** on the above image
+
 /pages/dynamic-routes/folder/index.vue
+
 ```html
+
 <template>
 	<div>
 		<h1>/pages/dynamic-routes/folder/index.vue</h1>
 	</div>
 </template>
 ```
-repeat this pattern to other files.
+
+repeat the code above and change their `<h1>` tag according to their paths like the on above.
 
 Try accessing
+
 1. http://localhost:3000/dynamic-routes/
+![dynamic](https://raw.githubusercontent.com/trleonarddalmacio/images/master/nuxt-tutorial/3%20Routes%202.1.png)
+
 2. http://localhost:3000/dynamic-routes/hahaha
+![dynamic](https://raw.githubusercontent.com/trleonarddalmacio/images/master/nuxt-tutorial/3%20Routes%202.2.png)
+
 3. http://localhost:3000/dynamic-routes/folder/
+![dynamic](https://raw.githubusercontent.com/trleonarddalmacio/images/master/nuxt-tutorial/3%20Routes%202.3.png)
 4. http://localhost:3000/dynamic-routes/folder/hehehe
+![dynamic](https://raw.githubusercontent.com/trleonarddalmacio/images/master/nuxt-tutorial/3%20Routes%202.4.png)
+
 
 ### Nested Routes
-To create a nested route you should create a Vue file with the **same name as the directory** which contains the children and add ```<nuxt-child/>``` inside the parent component.
+**Nested Routes** are routes where you can **combine multiple .vue files** inside a **single route** and **render the .vue files simultaneously**. To create a nested route you should create a Vue file with the **same name as the directory** which contains the children and add ```<nuxt-child/>``` inside the parent component.
+
 ![nested-routes](https://raw.githubusercontent.com/trleonarddalmacio/images/master/nuxt-tutorial/3%20Routes%203.png)
 
 users.vue
+
 ```html
 <template>
 	<div>
 		<h1>/pages/nested-routes/users.vue</h1>
-		<nuxt-child/> <!-- this is where the child component will render -->
+		<nuxt-child/>  <!-- this is where the child component will render -->
 	</div>
 </template>
 ```
-Do the same with other Vue files as we did above just remove the ```<nuxt-child/>``` to the child components
 
-Try accessing 
-http://localhost:3000/nested-routes/users
-http://localhost:3000/nested-routes/users/3
+Copy the structure of the **/pages/nested-routes** on the image above. Then do the same with other Vue files as we did on the code above, just remove the ```<nuxt-child/>``` to the child components
+```html
+<template>
+	<div>
+		<h1>/pages/nested-routes/users.vue</h1>
+	</div>
+</template>
+```
+Try accessing
+
+1. http://localhost:3000/nested-routes/users
+![nested-routes](https://raw.githubusercontent.com/trleonarddalmacio/images/master/nuxt-tutorial/3%20Routes%203.1.png)
+
+2. http://localhost:3000/nested-routes/users/3
+![nested-routes](https://raw.githubusercontent.com/trleonarddalmacio/images/master/nuxt-tutorial/3%20Routes%203.2.png)
 
 ---
 
 **NOTE:** You can validate params by adding a validate method. Change the content of the _id.vue to
+
 ```html
 <template>
 	<div>
 		<h1>/pages/nested-routes/users/_id.vue</h1>
 	</div>
 </template>
-  
+
 <script>
-export default {
+export  default {
 	validate ({ params }) {
 		// Must be a number
 		return /^\d+$/.test(params.id)
@@ -183,7 +243,9 @@ export default {
 </script>
 ```
 and try accessing
-http://localhost:3000/nested-routes/users/one
+
+1. http://localhost:3000/nested-routes/users/one
+![nested-routes](https://raw.githubusercontent.com/trleonarddalmacio/images/master/nuxt-tutorial/3%20Routes%203.3.png)
 
 ---
 
@@ -191,7 +253,7 @@ http://localhost:3000/nested-routes/users/one
 You may want to use asyncData if you want to fetch a data from the server without using store. ```asyncData``` is always called before loading a component. There are **3 ways** you can use asyncData, by **returning a promise**, **using await/async** and **using a callback**. I will be using https://jsonplaceholder.typicode.com/ to fetch some dummy data so we can try it without creating an API.
 
 Before starting let's install axios by running
-```
+```bash
 $ npm install --save axios
 ```
 
@@ -273,7 +335,7 @@ Example:
 <img src="/my-image.png"/>
 ```
 
-To try this let's download 2 image, any image is fine. Name them img1, img2 and put them at assets and static folder. Afterwards try to link them in the /pages/index.vue
+To try this let's download 2 image, any image is fine. Name them img1, img2 and put them at assets and static folder. Afterwards try to link them in the /pages/index.vue.
 
 My folder structure looks like:
 	![assets-static-structure](https://raw.githubusercontent.com/trleonarddalmacio/images/master/nuxt-tutorial/5%20Assets%201.1.png)
@@ -293,7 +355,7 @@ If we have external packages that we need to use, we must include them in nuxt.c
 Thus we will fix the Axios that we import earlier and add some plugins and packages that we need to use.
 
 To install the packages type the
-```
+```bash
 $ npm install --save nuxt-buefy
 # and
 $ npm install --save-dev pug@2.0.0-beta6 pug-loader node-sass sass-loader
@@ -332,7 +394,7 @@ module.exports = {
 **NOTE:**  This is **not** the optimal way to **use Buefy with Nuxt**. You should  run `npm install --save nuxt-buefy` and simply include it on **modules** at **nuxt.config.js**. I've imported Buefy through plugins to show how to add a plugin. But both of them do work, it's just that importing Buefy through the plugin would delay the application of the css.
 
 **This is the correct way**
-```
+```bash
 $ npm install --save nuxt-buefy
 ```
 nuxt.config.js
@@ -357,73 +419,88 @@ module.exports  = {
 
 ---
 
-Now we can freely use the Buefy inside our modules. Now, let's create a Header.vue file inside the components directory. Copy this code inside
+Now we can freely use the Buefy inside our modules. Now, let's create a **Header.vue** file inside the components directory. Copy this code inside
 ```pug
-<template  lang="pug">
-	nav.navbar.is-primary.has-shadow.is-spaced
-		div.container
-			div.navbar-brand
-				a.nav-item.is-size-3.has-text-light </> Blog Posts
-		div.navbar-menu
-			div.navbar-start.m-l-2
-				a.navbar-item.button.is-primary.control Home
-				a.navbar-item.button.is-primary.control About Us
-			div.navbar-end
-				a.button.is-primary.control Login
-				a.button.is-primary.control Sign Up
+<template lang="pug">
+	div
+		nav.navbar.is-primary.has-shadow.is-spaced.is-fixed-top
+			div.container
+				div.navbar-brand
+					a.nav-item.is-size-3.has-text-light </> Blog Posts
+				div.navbar-menu
+					div.navbar-start.m-l-2
+						nuxt-link.navbar-item.button.is-primary.control(to="/") Home
+						nuxt-link.navbar-item.button.is-primary.control(to="/posts") Posts
+						nuxt-link.navbar-item.button.is-primary.control(to="/basic-routes") Basic Routes
+						nuxt-link.navbar-item.button.is-primary.control(to="/dynamic-routes") Dynamic Routes
+						nuxt-link.navbar-item.button.is-primary.control(to="/nested-routes/users") Nested Routes
+		nav.navbar.is-primary.has-shadow.is-spaced.push-down
+			div.container
+				div.navbar-brand
+					a.nav-item.is-size-3.has-text-light </> Blog Posts
 </template>
 
-  
-
-<style>
+<style lang="scss">
 .m-l-2 {
 	margin-left: 2rem;
 }
+.push-down {
+	z-index: -1;
+}
 </style>
 ```
+The `nuxt-link` right now, functions the same as the `router-link` from Vue.js.
 
-Then lets create an index.vue file in the pages/posts/ and connect the Header.vue. Copy this code to your pages/posts/index.vue
+Then lets create an **index.vue** file in the pages/posts/. Copy this code to your **pages/posts/index.vue**
 ```pug
-<template  lang="pug">
-	div
-		img.has-bg-img
-		app-header
-		div.container.m-t-3
-			div.card.m-b-1(v-for="post in posts")
-				div.box
-					div.card-header
-						div.card-header-title Title: {{post.title}}
-					div.card-content
-						p {{ post.body }}
-						br
-						nuxt-link(:to="'/posts/'+ post.id") Read more...
+<template lang="pug">
+div
+	img.has-bg-img
+	div.container
+		div.card.m-b-1(v-for="post in posts")
+			div.box
+				div.card-header
+					div.card-header-title Title: {{post.title}}
+					span by: {{ post.name }}
+				div.card-content
+					p {{ post.body }}
+					br
+					nuxt-link(:to="'/posts/'+ post.id") Read more...
 </template>
-
-  
 
 <script>
 import  axios  from  'axios';
-import  Header  from  '~/components/Header.vue';
 
 export  default {
-	components: {
-		appHeader:  Header
-	},
-	asyncData ({ params }) {
-		return  axios.get(`https://jsonplaceholder.typicode.com/posts/`)
-			.then((res) => {
-				return {
-					posts:  res.data
-				}
-			})
+	async  asyncData ({ params }) {
+		// get all posts from jsonplaceholder.typicode.com/post/
+		let  posts  =  await  axios.get(`https://jsonplaceholder.typicode.com/posts/`).then((res) => {
+			return  res;
+		})
+
+		// use the userId from the fetched posts to locate the name of the user
+		let  injectToPosts  = [];
+		posts.data.forEach((rawPost, index) => {
+			let  toInject  =  axios.get(`https://jsonplaceholder.typicode.com/users/${rawPost.userId}`)
+			injectToPosts.push(toInject);
+		});
+
+		//injection the name of the user to posts
+		await  axios.all(injectToPosts).then((result) => {
+			for (let  i  =  0; i  <  result.length; i++){
+				posts.data[i].name  =  result[i].data.name;
+			}
+		})
+
+		// sending
+		return {
+			posts:  posts.data
+		}
 	}
 }
 </script>
 
 <style  lang="scss">
-.m-t-3 {
-	margin-top: 3rem;
-}
 .m-b-1 {
 	margin-bottom: 1rem;
 }
@@ -442,29 +519,52 @@ export  default {
 	height: 100vh;
 	width: 100vw;
 }
-
 </style>
 ```
+Because we don't have our own API, we just used the https://jsonplaceholder.typicode.com to have same data to play with.
+
 I've downloaded a background image of my own, you can download your own background image.
+If you want to download the image I used you can [download it here](https://github.com/trleonarddalmacio/images/raw/master/nuxt-tutorial/bg-img.jpg) and put it on your assets folder.
+
+Now, we will include or connect the **Header.vue** on all our **.vue** files. Inside your **layouts** folder create a **default.vue** file and copy
+```pug
+<template lang="pug">
+	div
+		app-header
+		nuxt
+</template>
+
+<script>
+import Header from '~/components/Header.vue';
+
+export default {
+	components: {
+		appHeader:  Header
+	},
+}
+</script>
+```
+
 
 My files
-![plugin-file-structure](https://raw.githubusercontent.com/trleonarddalmacio/images/master/nuxt-tutorial/6%20Plugins%201.png)
+![plugin-file-structure](https://raw.githubusercontent.com/trleonarddalmacio/images/master/nuxt-tutorial/6%20Plugins%201%20New.png)
 
 Output:
 
 ![plugin-output](https://raw.githubusercontent.com/trleonarddalmacio/images/master/nuxt-tutorial/6%20Plugins%202.png)
 
+![plugin-output](https://raw.githubusercontent.com/trleonarddalmacio/images/master/nuxt-tutorial/6%20Plugins%203.png)
 # 7. [Deployment](https://nuxtjs.org/faq/heroku-deployment)
 Finally, we will learn how to deploy our application into Heroku.
 
 If you don't have an account, please do [sign up for a Heroku account](https://signup.heroku.com/login). 
 
 Then Install the Heroku CLI by running
-```
+```bash
 $ sudo npm -g heroku
 ```
 and login by typing
-```
+```bash
 $ heroku login
 ```
 ![heroku-login](https://raw.githubusercontent.com/trleonarddalmacio/images/master/nuxt-tutorial/7%20Deployment%201.png)
@@ -473,7 +573,7 @@ In your Heroku dashboard create a new app
 ![heroku-create-app](https://raw.githubusercontent.com/trleonarddalmacio/images/master/nuxt-tutorial/7%20Deployment%202.png)
 
 After creation type,
-```
+```bash
 $ heroku config:set NPM_CONFIG_PRODUCTION=false -a <app-name>
 # <app-name> is the name of the app you created at heroku
 $ heroku config:set HOST=0.0.0.0 -a <app-name>
@@ -495,7 +595,7 @@ Replace your scripts with this
 
 Now lets connect create our repo, connect it to Heroku and then, deploy it!
 Navigate to your project folder and type
-```
+```bash
 $ git init
 $ git add .
 $ git commit -m "deploying"
@@ -507,4 +607,4 @@ Wait for it to be pushed, if you are successful you should have seen this messag
 ![pushing-to-heroku](https://raw.githubusercontent.com/trleonarddalmacio/images/master/nuxt-tutorial/7%20Deployment%205.png)
 
 Now let's see our deployed website!
-![deployed-website](https://raw.githubusercontent.com/trleonarddalmacio/images/master/nuxt-tutorial/7%20Deployment%206.png)
+![deployed-website](https://raw.githubusercontent.com/trleonarddalmacio/images/master/nuxt-tutorial/7%20Deployment%206%20New.png)
